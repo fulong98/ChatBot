@@ -18,13 +18,3 @@ it("can receive an order",() =>{
     expect (coffeeManager.getCurrentOrders()).toEqual([order]);
 })
 
-class CoffeeManager {
-    constructor (){this.orders = []}
-    getCurrentOrders(order){
-        return this.orders;
-    }
-    receiveOrder(orders){
-        return this.orders.push(orders);
-    }
-
-}
