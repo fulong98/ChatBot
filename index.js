@@ -101,7 +101,7 @@ bot.command('EE2001_Circuit_Analysis', (ctx) => {
         ctx.replyWithPhoto(photoWithCaption.photoUrl, photoWithCaption.markup);
     })
 });
-///EE2001_Tutorial_\d/
+//  /EE2001_Tutorial_\d/
 
 bot.command("EE2001_Tutorial_3", (ctx) => {
     const createMarkup = (content) => {
