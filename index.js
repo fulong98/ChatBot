@@ -4,9 +4,10 @@ const URL = process.env.URL || "https://chatbotxxxasd.herokuapp.com/" ;
 const PORT = process.env.PORT || 3000;
 const API_KEY = "678358866:AAH6Nx1Nv6u-LKByxN8XMsSOJAHUW5Z-Zro";
 
-bot.use(Telegraf.log());
-bot.help(({rpely}) => reply("Hello I'm the Telegram Bot"));
+
 const bot = new Telegraf(API_KEY);
+
+
 
 // concept of js function
 // function greet(name){
