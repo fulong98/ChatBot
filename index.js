@@ -22,9 +22,29 @@ const bot = new Telegraf(API_KEY);
 
 // const greet2=name => "Hello" +name;
 
-const helpHandler = context => context.reply("Hello");
-bot.start((ctx) => ctx.reply('Welcome'));
-bot.help(helpHandler);
-bot.command("hello",context => context.reply("Good Morning"));
+bot.use(Telegraf.log());
 
-bot.launch();
+bot.help(({ reply }) => reply("Hello I'm the Solex Bot"));
+
+const coffeeOrderSessions = [];
+
+bot.command("orderopen", ctx => {
+  const { from } = ctx.update.message;
+  const coffeeGif = "CgADBAADdwADg731Uoi1wlQtUhaEAg";
+  ctx.replyWithAnimation(coffeeGif, { caption: "Coffee Order Open!" });
+  const newSession = {
+    from,
+    orders: [],
+    isOrderOpen: true
+  };
+  coffeeOrderSessions.push(newSession);
+});
+
+bot.start(ctx => ctx.reply("Hello"));
+
+if (process.env.NODE_ENV === "production") {
+  bot.telegram.setWebhook(`${URL}/bot${API_TOKEN}`);
+  bot.startWebhook(`/bot${API_TOKEN}`, null, PORT);
+} else {
+  bot.launch();
+}
