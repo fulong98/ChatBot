@@ -1,6 +1,6 @@
 console.log("Running chatbot...");
-const {moduleHandler, tutOneHandler} = require('./tutorialHandlers');
-const {moduleHandler, tutTwoHandler} = require('./tutorialHandlers');
+const {moduleHandler, tutOneHandler,tutTwoHandler} = require('./tutorialHandlers');
+
 const Telegraf = require('telegraf');
 const URL = process.env.URL || "https://chatbotxxxasd.herokuapp.com/" ;
 const PORT = process.env.PORT || 3000;
