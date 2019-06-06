@@ -1,4 +1,6 @@
 console.log("Running chatbot...");
+const {moduleHandler, tutOneHandler} = require('./tutorialHandlers');
+const {moduleHandler, tutTwoHandler} = require('./tutorialHandlers');
 const Telegraf = require('telegraf');
 const URL = process.env.URL || "https://chatbotxxxasd.herokuapp.com/" ;
 const PORT = process.env.PORT || 3000;
@@ -43,64 +45,31 @@ bot.help(({ reply }) => reply("Hello I'm the Solex Bot"));
 //     .extra())
 // });
 
-bot.command('EE2001_Circuit_Analysis', (ctx) => {
-    ctx.reply('Tutorial Answer', Markup
-    .keyboard(['/EE2001_Tutorial_1', '/EE2001_Tutorial_2', '/EE2001_Tutorial_3'])
-    .oneTime()
-    .resize()
-    .extra()
-  )
-  });
+bot.command('EE2001_Circuit_Analysis', moduleHandler);
 
-  bot.command('EE2001_Tutorial_1', (ctx) => {
-      const createMarkup = (content) => {
-          const markup = Extra.markup();
-          markup.caption = content;
-          return markup;
-      }
-      const photosWithCaption = [
-          {
-              photoUrl: 'https://farm8.staticflickr.com/7687/26258666314_31dbf6ef95_b.jpg',
-              markup: createMarkup('Q1')
-          },
-          {
-            photoUrl: 'https://farm8.staticflickr.com/7487/26258777194_299a526877_b.jpg',
-            markup: createMarkup('Q2,Q3')
-        },
-        {
-            photoUrl: 'https://farm8.staticflickr.com/7057/26770760412_eb538c6274_b.jpg',
-            markup: createMarkup('Q4')
-        },
-        {
-            photoUrl: 'https://farm8.staticflickr.com/7068/26258777564_55b90c67e8_b.jpg',
-            markup: createMarkup('Q5')
-        },
-      ]
-      photosWithCaption.forEach(photoWithCaption => {
-          ctx.replyWithPhoto(photoWithCaption.photoUrl, photoWithCaption.markup);
-      })
-  });
+bot.command('EE2001_Tutorial_1', tutOneHandler);
+bot.command('EE2001_Tutorial_2', tutTwoHandler);
 
-  bot.command('EE2001_Tutorial_2', (ctx) => {
-    const createMarkup = (content) => {
-        const markup = Extra.markup();
-        markup.caption = content;
-        return markup;
-    }
-    const photosWithCaption = [
-        {
-            photoUrl: 'https://farm8.staticflickr.com/7273/26830892066_9dbe4a0225_b.jpg',
-            markup: createMarkup('Q1,Q2')
-        },
-        {
-          photoUrl: 'https://farm8.staticflickr.com/7419/26591858460_f2d2964be8_b.jpg',
-          markup: createMarkup('Q3,Q4')
-      }
-    ]
-    photosWithCaption.forEach(photoWithCaption => {
-        ctx.replyWithPhoto(photoWithCaption.photoUrl, photoWithCaption.markup);
-    })
-});
+//   bot.command('EE2001_Tutorial_2', (ctx) => {
+//     const createMarkup = (content) => {
+//         const markup = Extra.markup();
+//         markup.caption = content;
+//         return markup;
+//     }
+//     const photosWithCaption = [
+//         {
+//             photoUrl: 'https://farm8.staticflickr.com/7273/26830892066_9dbe4a0225_b.jpg',
+//             markup: createMarkup('Q1,Q2')
+//         },
+//         {
+//           photoUrl: 'https://farm8.staticflickr.com/7419/26591858460_f2d2964be8_b.jpg',
+//           markup: createMarkup('Q3,Q4')
+//       }
+//     ]
+//     photosWithCaption.forEach(photoWithCaption => {
+//         ctx.replyWithPhoto(photoWithCaption.photoUrl, photoWithCaption.markup);
+//     })
+// });
 //  /EE2001_Tutorial_\d/
 
 bot.command("EE2001_Tutorial_3", (ctx) => {
