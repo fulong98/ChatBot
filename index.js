@@ -1,5 +1,5 @@
 console.log("Running chatbot...");
-const {moduleHandler, tutOneHandler,tutTwoHandler} = require('./tutorialHandlers');
+const {moduleHandler, tutOneHandler,tutTwoHandler,tutThreeHandler} = require('./tutorialHandlers');
 
 const Telegraf = require('telegraf');
 const URL = process.env.URL || "https://chatbotxxxasd.herokuapp.com/" ;
@@ -34,7 +34,7 @@ ctx.reply('Course List', Markup
 .extra())
 });
 
-bot.help(({ reply }) => reply("Hello I'm the Solex Bot"));
+bot.help(({ reply }) => reply("Hello I'm the FuLong Bot.\n \start : Start the bot"));
 
 
 // bot.command("Course", ctx => {
@@ -49,53 +49,8 @@ bot.command('EE2001_Circuit_Analysis', moduleHandler);
 
 bot.command('EE2001_Tutorial_1', tutOneHandler);
 bot.command('EE2001_Tutorial_2', tutTwoHandler);
+bot.command('EE2001_Tutorial_3', tutThreeHandler);
 
-//   bot.command('EE2001_Tutorial_2', (ctx) => {
-//     const createMarkup = (content) => {
-//         const markup = Extra.markup();
-//         markup.caption = content;
-//         return markup;
-//     }
-//     const photosWithCaption = [
-//         {
-//             photoUrl: 'https://farm8.staticflickr.com/7273/26830892066_9dbe4a0225_b.jpg',
-//             markup: createMarkup('Q1,Q2')
-//         },
-//         {
-//           photoUrl: 'https://farm8.staticflickr.com/7419/26591858460_f2d2964be8_b.jpg',
-//           markup: createMarkup('Q3,Q4')
-//       }
-//     ]
-//     photosWithCaption.forEach(photoWithCaption => {
-//         ctx.replyWithPhoto(photoWithCaption.photoUrl, photoWithCaption.markup);
-//     })
-// });
-//  /EE2001_Tutorial_\d/
-
-bot.command("EE2001_Tutorial_3", (ctx) => {
-    const createMarkup = (content) => {
-        const markup = Extra.markup();
-        markup.caption = content;
-        return markup;
-    }
-    const photosWithCaption = [
-        {
-            photoUrl: 'https://farm8.staticflickr.com/7766/26831045826_de4fe06bc7_b.jpg',
-            markup: createMarkup('Q1')
-        },
-        {
-          photoUrl: 'https://farm8.staticflickr.com/7691/26864900685_f98ca5dcf3_b.jpg',
-          markup: createMarkup('Q2,Q3')
-      },
-      {
-          photoUrl: 'https://farm8.staticflickr.com/7303/26831046046_61f921db29_b.jpg',
-          markup: createMarkup('Q4,Q5')
-      },
-    ]
-    photosWithCaption.forEach(photoWithCaption => {
-        ctx.replyWithPhoto(photoWithCaption.photoUrl, photoWithCaption.markup);
-    })
-});
 
 
 if (process.env.NODE_ENV === "production") {

@@ -61,8 +61,34 @@ const tutTwoHandler = ctx => {
     })
 }
 
+const tutThreeHandler = ctx => {
+    const createMarkup = (content) => {
+        const markup = Extra.markup();
+        markup.caption = content;
+        return markup;
+    }
+    const photosWithCaption = [
+        {
+            photoUrl: 'https://farm8.staticflickr.com/7766/26831045826_de4fe06bc7_b.jpg',
+            markup: createMarkup('Q1')
+        },
+        {
+          photoUrl: 'https://farm8.staticflickr.com/7691/26864900685_f98ca5dcf3_b.jpg',
+          markup: createMarkup('Q2,Q3')
+      },
+      {
+          photoUrl: 'https://farm8.staticflickr.com/7303/26831046046_61f921db29_b.jpg',
+          markup: createMarkup('Q4,Q5')
+      },
+    ]
+    photosWithCaption.forEach(photoWithCaption => {
+        ctx.replyWithPhoto(photoWithCaption.photoUrl, photoWithCaption.markup);
+    })
+}
+
 module.exports = {
     moduleHandler,
     tutOneHandler,
-    tutTwoHandler
+    tutTwoHandler,
+    tutThreeHandler
 };
